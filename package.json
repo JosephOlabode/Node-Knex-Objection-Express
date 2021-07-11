@@ -2,16 +2,18 @@
   "name": "Node-Knex-Objection-Express",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "todo_example/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /todo_example/server.js"
+    "start": "nodemon todo_example/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.95.7",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.11"
