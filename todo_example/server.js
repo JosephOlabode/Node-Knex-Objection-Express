@@ -11,6 +11,7 @@ const knex = Knex(knexFile.development);
 
 const {Model} = require('objection');
 
+// Bind all models to the knex instance
 Model.knex(knex);
 
 app.use("/api", apiRoutes);
