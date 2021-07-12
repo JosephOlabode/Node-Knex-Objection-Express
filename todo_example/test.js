@@ -23,7 +23,9 @@ const getUsers = async () => {
     // returns all users
     const users = await User.query();
     console.log(users);
-}
+};
+
+getUsers();
 // // Run queries with just pure knex query builder
 // knex("todos")
 //     .where("user_id",  1)
