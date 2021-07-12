@@ -1,13 +1,25 @@
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
+  // Deletes ALL data of todos
+  return knex('todos').del()
+    .then(()=> {
+      // Delet all data of users
+      return knex("users").del();
+    })
     .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
+      // Inserts new data into users
+      return knex('users').insert([
+        {name: "Marc", age: 19},
+        {name: "Ben", age: 31},
+        {name: "Jessica", age: 27}
       ]);
+    })
+    .then(users => {
+      // Inserts new data into todos
+      return knex("todos").insert([
+        {user_id: 1, todo: "Buy Milk"},
+        {user_id: 1, todo: "Walk the dog"},
+        {user_id: 2, todo: "Call grandma"}
+      ])
     });
 };
