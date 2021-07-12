@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../models/User');
 
-router.get('/', (req, res) => {
+router.get('/',  async (req, res) => {
 
     const users = await User.query();
     res.json(users);

@@ -3,11 +3,11 @@ const router = express.Router();
 const Todo = require('../../models/Todo');
 
 // Create endpoint of all todos
-router.get('/', (req, res) => {
+router.get('/', async  (req, res) => {
 
     const todos = await Todo.query();
     res.json(todos);
-    
+
     // res.json([
     //     {
     //         id: 1,
