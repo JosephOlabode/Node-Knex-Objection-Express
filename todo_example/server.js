@@ -8,7 +8,7 @@ const Knex = require('knex');
 const knexFile = require('./knefile.js');
 const knex = Knex(knexFile.development);
 
-
+// Import Objection.js Model class
 const {Model} = require('objection');
 
 // Bind all models to the knex instance
