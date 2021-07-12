@@ -1,11 +1,15 @@
 // Update with your config settings.
 
+const credentials = require('./config/db_config.js');
+
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'mysql',
     connection: {
-      filename: './dev.sqlite3'
+      database: credentials.database,
+      user: credentials.user,
+      password: credentials.password
     }
   },
 
