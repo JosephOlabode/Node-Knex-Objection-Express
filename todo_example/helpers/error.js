@@ -124,7 +124,14 @@ function errorHandler(err, res) {
             type: "UnknownDatabaseError",
             data: {}
         });
-    } else {
+    } else if(err instanceof CustomError) {
+        // custome error class
+        res.status(err.statusCode).send({
+            message: err.message,
+            type: err.type,
+            data: err.data
+        })
+    }else {
         // Handle every other error generally
         res.status(500).send({
             message: "Unknown Error",
@@ -134,6 +141,18 @@ function errorHandler(err, res) {
     }
 }
 
+class CustomError extends Error {
+    constructor(statusCode = 500, message, type = "Error", data = {}) {
+        super();
+        this.statusCode = statusCode;
+        this.message = message;
+        this.type = type;
+        this.data = data;
+        this.name = this.constructor.name;
+    }
+}
+
 module.exports = {
-    errorHandler
+    errorHandler,
+    CustomError
 }

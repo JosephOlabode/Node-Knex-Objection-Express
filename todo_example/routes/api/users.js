@@ -5,10 +5,11 @@ const User = require('../../models/User');
 
 router.get('/',  async (req, res, next) => {
     try {
-        const users = await User.query();
-        if(users.length === 0) {
-            throw new NotFoundError(users);
-        }
+        const users = await User.query()
+            .where("name", "Hakuna Matata").throwIfNotFound();
+        // if(users.length === 0) {
+        //     throw new NotFoundError(users);
+        // }
         res.json(users);
     } catch(err) {
         next(err);
