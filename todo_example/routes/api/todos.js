@@ -6,8 +6,9 @@ const Todo = require('../../models/Todo');
 router.get('/', async  (req, res) => {
     // const todos = await Todo.query()
     // const todos = await Todo.query().select("todo", "done");
-    const todos = await Todo.query().where("todo", "Buy Milk");
-
+    // const todos = await Todo.query().where("todo", "Buy Milk");
+    const todos = await Todo.query().withGraphFetched("user");
+    
     if(!todos.length === 0) {
         return res.status(404).json({message: "No todo found"});
     }
