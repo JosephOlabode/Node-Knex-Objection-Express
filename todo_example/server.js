@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+// Accept JSON data
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
 const apiRoutes = require("./routes/api");
 
 // implementing the connection with the development db
