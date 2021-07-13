@@ -10,9 +10,10 @@ router.get('/',  async (req, res) => {
 
 // create new user using a POST request
 router.post("/", async (req, res) => {
+    const {name, age} = req.body; // destruture name and age out of the sent json
     try {
 
-        const user = await User.query().insert({name: "Kim", age: 28});
+        const user = await User.query().insert({name, age});
         res.json(user);
 
     } catch(err) {
