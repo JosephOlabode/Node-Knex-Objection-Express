@@ -4,25 +4,8 @@ const User = require('../../models/User');
 
 router.get('/',  async (req, res) => {
 
-    const users = await User.query();
+    const users = await User.query().findById(2);
     res.json(users);
-    // res.json([
-    //     {
-    //         id: 1,
-    //         name: 'Marc',
-    //         age: 19
-    //     },
-    //     {
-    //         id: 2,
-    //         name: 'Ben',
-    //         age: 31
-    //     },
-    //     {
-    //         id: 3,
-    //         name: 'Jessica',
-    //         age: 27
-    //     }
-    // ]);
 });
 
 //Export to api.js
